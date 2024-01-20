@@ -1,0 +1,128 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.home.fincasa'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.home.fincasa"
+        minSdk 24
+        targetSdk 33
+
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+        resConfigs "en", "pt"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        buildConfig = true
+        viewBinding true
+        dataBinding true
+    }
+
+    aaptOptions {
+        additionalParameters "--no-version-vectors"
+    }
+
+    def baseUrl = [
+            release: '"https://551-review-release-7d7jqz.k8s.senailondrina.com"',
+            qa     : '"https://551-review-release-7d7jqz.k8s.senailondrina.com"',
+            debug  : '"https://551-review-release-7d7jqz.k8s.senailondrina.com"',
+            preprod: '"https://551-review-develop-3zknud.k8s.senailondrina.com"'
+    ]
+
+    flavorDimensions "version"
+    productFlavors {
+        common {
+            dimension "version"
+            applicationId = "com.home.fincasa.common"
+            versionName = '1.0.0'
+            versionCode = 3000100
+            buildConfigField 'String', 'ORIGIN', '"COMMON"'
+            resValue "string", "app_name", "FinCasa"
+            manifestPlaceholders = [
+                    appIcon: "@mipmap/ic_launcher",
+                    appIconRound: "@mipmap/ic_launcher_round"
+            ]
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
+            minifyEnabled false
+            debuggable true
+            testCoverageEnabled true
+            testProguardFile 'proguard-test-rules.pro'
+            buildConfigField 'String', 'BASE_URL', baseUrl.debug
+            buildConfigField 'String', 'ANALYTICS', '"UA-70468372-3"'
+            buildConfigField 'int', 'TIMEOUTTIME', "3000"
+        }
+
+        qa {
+            applicationIdSuffix '.qa'
+            versionNameSuffix '-qa'
+            minifyEnabled false
+            debuggable true
+            buildConfigField 'int', 'TIMEOUTTIME', "240"
+            buildConfigField 'String', 'BASE_URL', baseUrl.qa
+        }
+
+        preprod {
+            applicationIdSuffix '.preprod'
+            versionNameSuffix '-preprod'
+            minifyEnabled false
+            shrinkResources false
+            debuggable true
+            buildConfigField 'String', 'BASE_URL', baseUrl.preprod
+            buildConfigField 'int', 'TIMEOUTTIME', "60"
+        }
+
+        release {
+            minifyEnabled true
+            shrinkResources true
+            debuggable false
+
+            buildConfigField 'String', 'BASE_URL', baseUrl.release
+            buildConfigField 'int', 'TIMEOUTTIME', "60"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation 'com.github.AnyChart:AnyChart-Android:0.0.3'
+    implementation "com.android.support:multidex:1.0.3"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.4.0"
+    implementation "com.orhanobut:hawk:2.0.1"
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation "io.konform:konform-jvm:0.2.0"
+    implementation "io.konform:konform-js:0.2.0"
+    implementation "io.konform:konform:0.2.0"
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.6'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.6'
+    implementation 'androidx.databinding:databinding-runtime:8.2.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
