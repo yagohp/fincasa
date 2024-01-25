@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#0c348c</color> <!-- FFBB86FC -->
+    <color name="purple_500">#2484cc</color> <!-- FF6200EE -->
+    <color name="purple_700">#e2a851</color> <!-- FF3700B3 -->
+    <color name="purple_bg">#ede6d5</color>
+
+    <color name="teal_200">#627c9d</color>
+    <color name="teal_700">#a6becf</color>
+
+    <color name="dark_gray">#242e34</color> <!-- 4f4f4f -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="soft_gray">#a3a3a3</color> <!-- #143642 #DAD2D8 #0F8B8D -->
+    <color name="green">#95BF74</color> <!-- 0F8C3B FF3700B3 -->
+    <color name="soft_green">#659B5E</color>
+    <color name="blue">#3C91E6</color>
+
+    <color name="yellow">#EC9A29</color> <!-- FF3700B3 -->
+    <color name="red">#B80000</color> <!-- FF3700B3 -->
+    <color name="wine">#A8201A</color> <!-- FF3700B3 -->
+</resources>

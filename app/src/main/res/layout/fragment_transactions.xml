@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.home.fincasa.history.ui.HistoryFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.home.fincasa.history.ui.HistoryViewModel" />
+    </data>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/blue"-->
+<!--        android:orientation="vertical">-->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="28sp"-->
+<!--            android:padding="5dp"-->
+<!--            android:text="2024"-->
+<!--            android:gravity="center"/>-->
+
+<!--        <com.google.android.material.tabs.TabLayout-->
+<!--            android:id="@+id/view_pager_tab"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/blue"-->
+<!--            app:tabMode="scrollable"-->
+<!--            app:tabContentStart="56dp">-->
+
+<!--            <com.google.android.material.tabs.TabItem-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Agosto"-->
+<!--                />-->
+
+<!--            <com.google.android.material.tabs.TabItem-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Setembro"-->
+<!--                />-->
+
+<!--            <com.google.android.material.tabs.TabItem-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Outubro"-->
+<!--                />-->
+
+<!--            <com.google.android.material.tabs.TabItem-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Novembro"-->
+<!--                />-->
+
+<!--            <com.google.android.material.tabs.TabItem-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Dezembro"-->
+<!--                />-->
+
+<!--            <com.google.android.material.tabs.TabItem-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Janeiro"-->
+<!--                />-->
+<!--        </com.google.android.material.tabs.TabLayout>-->
+<!--    </LinearLayout>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="68dp"
+            android:layout_marginBottom="48dp"
+            app:listTransactions="@{viewModel.listTransactions}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_transaction" />
+
+        <View
+            android:id="@+id/total_amount_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_above="@id/total_amount"
+            android:background="@drawable/shadow_ll"/>
+
+        <RelativeLayout
+            android:id="@+id/total_amount"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="5dp"
+                android:text="R$ 60.000,00"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                app:drawableStartCompat="@drawable/baseline_trending_up_24"
+                app:drawableTint="@color/green" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="5dp"
+                android:text="R$ 60.000,00"
+                android:layout_marginStart="38dp"
+                android:layout_marginEnd="38dp"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:layout_gravity="center_vertical"
+                app:drawableStartCompat="@drawable/baseline_credit_card_24"
+                app:drawableTint="@color/yellow" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="5dp"
+                android:text="R$ 60.000,00"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:layout_gravity="center_vertical"
+                app:drawableStartCompat="@drawable/baseline_trending_down_24"
+                app:drawableTint="@color/wine" />
+        </RelativeLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fbtn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/baseline_add_24"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@id/total_amount_shadow" />
+    </RelativeLayout>
+</layout>

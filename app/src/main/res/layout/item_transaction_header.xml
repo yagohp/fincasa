@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="transaction"
+            type="com.home.fincasa.models.Transaction" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/timeline_bar_height">
+
+        <View
+            android:id="@+id/vw_timeline_bar"
+            android:layout_width="1dp"
+            android:layout_height="@dimen/timeline_bar_height"
+            android:layout_marginStart="21dp"
+            android:background="@color/soft_gray"
+            android:visibility="visible"/>
+
+        <View
+            android:id="@+id/vw_timeline_bar_first"
+            android:layout_width="1dp"
+            android:layout_height="26dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="21dp"
+            android:background="@color/soft_gray"
+            android:visibility="invisible" />
+
+        <ImageView android:id="@+id/ic_circle"
+            android:src="@drawable/ic_circle"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            app:tint="@color/blue"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="42dp"
+            android:textColor="@color/blue"
+            android:paddingBottom="4dp"
+            app:date="@{transaction.date}" />
+    </RelativeLayout>
+</layout>

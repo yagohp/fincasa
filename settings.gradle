@@ -15,3 +15,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "FinCasa"
 include ':app'
+<<<<<<< Updated upstream
+=======
+include ':datasource'
+include ':credentials'
+>>>>>>> Stashed changes

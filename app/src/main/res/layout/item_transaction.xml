@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="transaction"
+            type="com.home.fincasa.models.Transaction" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/timeline_bar_height">
+        <View
+            android:id="@+id/vw_timeline_bar"
+            android:layout_width="1dp"
+            android:layout_height="@dimen/timeline_bar_height"
+            android:layout_marginStart="21dp"
+            android:background="@color/soft_gray"
+            android:visibility="visible"/>
+
+        <View
+            android:id="@+id/vw_timeline_bar_last"
+            android:layout_width="1dp"
+            android:layout_height="26dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="21dp"
+            android:background="@color/soft_gray"
+            android:visibility="invisible" />
+
+        <ImageView android:id="@+id/ic_circle"
+            android:src="@drawable/ic_circle"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            app:color="@{transaction.color}"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="35dp"
+            android:padding="8dp">
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                android:text="@{transaction.title}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                android:text="@{transaction.category}"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="35dp"
+            android:padding="8dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                android:textAlignment="textEnd"
+                android:textColor="@color/wine"
+                app:currency="@{transaction.value}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                android:textAlignment="textEnd"
+                android:text="@{transaction.account}"/>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

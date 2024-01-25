@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="expense"
+            type="com.home.fincasa.models.Expense" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp">
+
+        <ImageView
+            android:id="@+id/ic_circle"
+            android:src="@drawable/ic_circle"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            app:color="@{expense.color}"  />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:text="@{expense.title}"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/ic_circle"/>
+
+        <TextView
+            android:id="@+id/tv_cat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            app:cat_acc_date="@{expense}"
+            android:layout_toEndOf="@id/ic_circle"
+            android:layout_below="@id/tv_title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:currency="@{expense.paid ? expense.amountPaid : expense.value}"
+            android:layout_marginEnd="5dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/containedButton"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall" />
+
+        <ImageButton
+            android:id="@+id/containedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_paid_24"
+            android:layout_marginEnd="15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="A tiny Android icon"
+            android:background="@android:color/transparent"
+            app:tint="@color/yellow"
+            />
+    </RelativeLayout>
+</layout>
